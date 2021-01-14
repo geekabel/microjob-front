@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 
-
-
-
 class Search extends Component {
     state = {
       query: '',
@@ -28,4 +25,4 @@ class Search extends Component {
     }
    }
    
-   export default Search
+   export default Search;
