@@ -6,11 +6,10 @@ class Application extends Component{
 
     render() {
         return (
-            <div>
+            <div className="container">
                 L'Application centrale
                 <Microjob />
             </div> 
-            
         )
     }
 

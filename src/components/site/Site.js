@@ -9,20 +9,30 @@ import Navbar from '../Menu/Navbar';
 import Footer from '../Footer/Footer';
 import Accueil from './Accueil/Accueil';
 import Error404 from  '../Error404/Error404'
+import Useraccount from '../Auth/usersaccount/Useraccount';
+import Category from '../App/Category';
+import microjobsLists from '../App/microjobsList';
 
 class Site extends Component {
+
+
+
+
     render() {
         return (
           <>
             <div className="site">
               <Navbar />
               <Switch>
-                <Route  path="/signin" exact render={() => <Signin />}/>
-                <Route  path="/signup" exact render={() => <Signup />}/>
-                <Route  path="/search" exact render={() => <Search />}/>
-                <Route path="/microjob" exact render={() => <Application />} />
-                <Route path="/contact" exact render={() => <Contact />} />
-                <Route path="/" exact render={() => <Accueil />} />
+                <Route  path="/myaccount" exact render={() => <Useraccount />}/>
+                <Route  path="/signin" exact component={Signin}/>
+                <Route  path="/signup" exact render={Signup}/>
+                <Route path="/categorie" exact component={Category} />
+                <Route path="/categorie/:id" exact component={microjobsLists} />
+                <Route  path="/search" exact  component={Search}/>
+                <Route path="/microjob" exact component={Application}/>
+                <Route path="/contact" exact component={Contact} />
+                <Route path="/" exact component={Accueil}/>
                 <Route
                   render={() => (
                     <Error404 type="404">
@@ -36,6 +46,6 @@ class Site extends Component {
             <Footer />
           </>
         );
-    }
+    } 
 }
 export default Site;
