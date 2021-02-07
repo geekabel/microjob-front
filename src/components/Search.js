@@ -5,9 +5,10 @@ class Search extends Component {
       query: '',
     }
    
-    handleInputChange = () => {
+    handleInputChange = (event) => {
+      const query = event.target.value;
       this.setState({
-        query: this.search.value
+        query
       })
     }
    

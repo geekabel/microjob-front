@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import axios from 'axios'
-
+import React, { Component } from 'react';
+import axios from 'axios';
+import Card from '../Card/Card'
 class microjobsList extends Component {
   constructor(props) {
     super(props);
@@ -44,17 +44,20 @@ class microjobsList extends Component {
       return <div>Loading...</div>;
     } else {
       const microjobsList = category.microjobs.map((job) => (
-        <ul key={job.id}>
-          <h3>{job.title}</h3>
-          <p>{job.description}</p>
-        </ul>
+     
+            <Card key={job.id} title ={job.title}
+            image={`https://microjobs-api.herokuapp.com${job.image.url}`}
+            description ={job.description}
+            name={job.title}
+            price={job.price}
+            /> 
         
       ));
 
       return (
         <div className="container">
-          <h1>Liste des Microjobs</h1>
-          <li>{microjobsList}</li>
+          <h3>Liste des Microjobs</h3>
+          <article className="d-flex">{microjobsList}</article>
         </div>
       );
     }

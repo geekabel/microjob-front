@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import banderole from '../../../assets/images/banderole.jpg';
-//import Category from '../../App/Category';
+import Category from '../../App/Category';
+import Search from '../../Search';
+import CategorieCard from '../../Card/CategorieCard'
 class Accueil extends Component {
   
     render() { 
@@ -9,8 +11,12 @@ class Accueil extends Component {
              <img src={banderole} alt="banderole" className="img-fluid"/>
               
                 <div className="container">
+                       <Search />  
+                       <div className="view">
+                       <CategorieCard />  
+                       </div>
                     <h2 className="text-center">Categories</h2>                
-                            
+                        <Category />    
                     <section className="row no-gutters align-items-center">
                         <div className="col-12">
                             <h1 className="text-center">Qui sommes-nous?</h1>

@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+//import log from '../helpers/log';
 //import { Link } from "react-router-dom";
 //import Microjobs from './Microjob';
 
@@ -21,9 +22,9 @@ class Category extends Component {
         .then((response) => {
           // le 0 c'est pour recuperer que le premier  tableau de mon objet parce que  ça ne fonctionne pas
           const categories = response.data;
-          //console.log("categories", categories);
+          //log('cat',cat)
           this.setState({ categories: categories, loading: false });
-             // console.log("id des categorie", );
+             
         });
     } catch (error) {
       this.setState({ error });
@@ -45,10 +46,7 @@ class Category extends Component {
         <a  key={category.id} href={`/categorie/${index + 1}`} >
           <li >{category.name}</li>
         </a>
-        
-  
-              
-        
+            
       ));
      
     return (
