@@ -19,7 +19,7 @@ const Formulaire = (props) => (
                  }
             </div>
             <div className="form-group">
-                <label htmlFor="nom">email :</label>
+                <label htmlFor="email">email :</label>
                 <input type="text" className="form-control" id="nom" aria-describedby="emailHelp"
                  name="email"
                  onChange={props.handleChange}
@@ -43,7 +43,7 @@ const Formulaire = (props) => (
                  }
             </div>
             <button type="submit" className="btn btn-primary" onClick={props.handleSubmit}>Envoyer</button>
-            </form>
+        </form>
    </>
     
 );

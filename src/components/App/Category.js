@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import CategorieCard from '../Card/CategorieCard'
 //import log from '../helpers/log';
 //import { Link } from "react-router-dom";
 //import Microjobs from './Microjob';
@@ -43,18 +44,15 @@ class Category extends Component {
       return <div>Loading...</div>;
     } else {
       const categoriesList = categories.map((category,index) => (
-        <a  key={category.id} href={`/categorie/${index + 1}`} >
-          <li >{category.name}</li>
+        <a  key={category.id} href={`/categorie/${index + 1}`} >  
+          <CategorieCard categories={category.name}/>
         </a>
             
       ));
      
     return (
-      <div className="container"> 
-        <h1>Liste des catégories</h1>
-          <ul>{categoriesList}</ul>
-
-          
+      <div className="containere"> 
+          {categoriesList}
       </div>
       
     );

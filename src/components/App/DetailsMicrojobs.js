@@ -3,8 +3,12 @@ import React, { Component } from 'react'
 import axios from 'axios';
 
 
-class Microjob extends  Component {
-  
+class DetailsMicrojobs extends  Component {
+
+  constructor(props) {
+    super(props);
+    this.state.id = props.match.params.id;
+  }
   // State of your application
   state = {
     microjobs: [],
@@ -14,11 +18,10 @@ class Microjob extends  Component {
   loadData = async () => {
     
     try {
-
-      
-      const response = await axios.get('https://microjobs-api.herokuapp.com/microjobs');
+      const response = await axios.get(`https://microjobs-api.herokuapp.com/microjobs/${this.state.id}`);
       this.setState({ microjobs: response.data });
 
+      console.log("id",response.data);
 
     } catch (error) {
       this.setState({ error });
@@ -27,11 +30,10 @@ class Microjob extends  Component {
   // Fetch your microjobs immediately after the component is mounted
   componentDidMount = async () => {
     this.loadData();
-
   };
 
   render() {
-    const { error} = this.state;
+    const { error,microjobs} = this.state;
 
     // Print errors if any
     if (error) {
@@ -41,16 +43,15 @@ class Microjob extends  Component {
     return (
       
       <div className="container d-flex mx-2">
-         {this.state.microjobs.map((microjob,id) => (
-           <div key={id} className="card taille "> 
-           <img className="card-img-top" src={`https://microjobs-api.herokuapp.com${microjob.image.formats.thumbnail.url}`} alt="les thumnails"/>
+         {microjobs.map((microjob) => (
+           <div key={microjob.id} className="taille "> 
+           <img className="img-fluid" src={`https://microjobs-api.herokuapp.com${microjob.image.formats.thumbnail.url}`} alt="les thumnails"/>
 
             <h5>{microjob.title} -{microjob.location}</h5>
 
-            <div className="card-body"> 
-              <p className="card-text"> {microjob.description}</p>
+            <div className="details-microjob"> 
+              <p className="description"> {microjob.description}</p>
               <p><span>a partir de </span>{microjob.price} <span>FRCFA</span></p>
-              <a href="/microdetails">Voir le details</a>
             </div>
             </div>
         ) ) }
@@ -59,4 +60,4 @@ class Microjob extends  Component {
   }
 }
 
-export default Microjob;
+export default DetailsMicrojobs;

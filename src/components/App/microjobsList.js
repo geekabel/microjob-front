@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Card from '../Card/Card'
+import Card from '../Card/Card';
+
+//Affi
 class microjobsList extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +24,9 @@ class microjobsList extends Component {
         .then((response) => {
           // le 0 c'est pour recuperer que le premier  tableau de mon objet parce que  ça ne fonctionne pas
           const category = response.data;
-          //console.log("categories", categories);
-          console.log(category);
+          //console.log("categories", category);
           this.setState({ category: category, loading: false });
-          console.log("categories", category.id);
+          console.log("categories", category);
         });
     } catch (error) {
       this.setState({ error });
@@ -34,28 +35,29 @@ class microjobsList extends Component {
 
   render() {
     const { error, loading, category } = this.state;
-    //console.log(this.state.categories);
     // Print errors if any
-    console.log("le titre", this.state.category);
+    //console.log("le titre", this.state.category);
     if (error) {
       return <div>Une erreur est survenue : {error.message}</div>;
     }
     if (loading) {
       return <div>Loading...</div>;
     } else {
-      const microjobsList = category.microjobs.map((job) => (
-     
-            <Card key={job.id} title ={job.title}
+      const microjobsList = category.microjobs.map((job,index) => (
+        
+        <a  key={job.id} href={`/microjob/${index + 1}`} >  
+            <Card  title ={job.title}
             image={`https://microjobs-api.herokuapp.com${job.image.url}`}
             description ={job.description}
             name={job.title}
             price={job.price}
+            details ={job.id}
             /> 
-        
+         </a>
       ));
 
       return (
-        <div className="container">
+        <div className="container pt-3">
           <h3>Liste des Microjobs</h3>
           <article className="d-flex">{microjobsList}</article>
         </div>

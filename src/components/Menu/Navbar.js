@@ -22,6 +22,9 @@ const navbar = (props) => (
                     <li className="nav-item">
                      <NavLink to="/Contact" exact className="nav-link" >Contact</NavLink>
                     </li>
+                    <li className="nav-item">
+                     <NavLink to="/devenirvendeur" exact className="nav-link" >Inscription pour service</NavLink>
+                    </li>
                 </ul>
             </div>
         </nav>

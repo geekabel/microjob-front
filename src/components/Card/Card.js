@@ -1,50 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
 
-export default function Cardmedia(props) {
-  const classes = useStyles();
+export default function Card(props) {
+ 
 
   return (
-    <Card className={classes.root}>
-      <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image={props.image}
-          title={props.name}
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-           {props.description.slice(0,150)}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary">
-         a partir de {props.price} FR
-        </Button>
-        <Button size="small" color="primary">
-          En Savoir plus
-        </Button>
-      </CardActions>
-    </Card>
+    <div className="card" style={{width: "18rem"}}>
+      <img class="card-img-top" src={props.image} alt={props.name}/>
+      <div className="card-body">
+      <h5 class="card-title">{props.title}</h5>
+        <p class="card-text">{props.description.slice(0,150)}...</p>
+        <a href={'/'} class="card-link">à partir de {props.price} FR</a>
+        <a href={props.details} class="card-link">Details of service</a>
+      </div>
+    </div>
   );
 }

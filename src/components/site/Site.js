@@ -4,7 +4,7 @@ import Signin from '../Auth/Signin';
 import Signup from '../Auth/Signup';
 import Search from '../Search';
 import Contact from '../Contact/Contact';
-import Application from '../App/Application';
+//import Application from '../App/Application';
 import Navbar from '../Menu/Navbar';
 import Footer from '../Footer/Footer';
 import Accueil from './Accueil/Accueil';
@@ -12,7 +12,9 @@ import Error404 from  '../Error404/Error404'
 import Useraccount from '../Auth/usersaccount/Useraccount';
 import Category from '../App/Category';
 import microjobsLists from '../App/microjobsList';
-
+import Devenirvendeur from '../Contact/Devenirvendeur';
+import Microjob from '../App/Microjob';
+import DetailsMicrojobs from "../App/DetailsMicrojobs";
 class Site extends Component {
 
 
@@ -30,8 +32,10 @@ class Site extends Component {
                 <Route path="/categorie" exact component={Category} />
                 <Route path="/categorie/:id" exact component={microjobsLists} />
                 <Route  path="/search" exact  component={Search}/>
-                <Route path="/microjob" exact component={Application}/>
+                <Route path="/microjob" exact component={Microjob}/>
+                <Route path="/microjob/:id" exact component={DetailsMicrojobs}/>
                 <Route path="/contact" exact component={Contact} />
+                <Route path="/devenirvendeur" exact component={Devenirvendeur} />
                 <Route path="/" exact component={Accueil}/>
                 <Route
                   render={() => (
